@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Hangman - Result</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        🎮 HANGMAN
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="categories.html">Play</a>
+        </li>
+
+        <li>
+            <a href="leaderboard.html">
+                Leaderboard
+            </a>
+        </li>
+
+        <li>
+            <a href="how-to-play.html">
+                How to Play
+            </a>
+        </li>
+
+    </ul>
+
+</header>
+
+
+<section class="page-header">
+
+    <span class="badge">
+        GAME RESULT
+    </span>
+
+    <h1 id="resultTitle">
+        Game Result
+    </h1>
+
+    <p>
+        Here is your final game result.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+    <div class="result-card">
+
+        <div class="result-icon" id="resultIcon">
+            🎉
+        </div>
+
+        <h2 id="resultMessage">
+            Game Result
+        </h2>
+
+        <div class="result-score">
+
+            <span>YOUR SCORE</span>
+
+            <strong id="finalScore">
+                0
+            </strong>
+
+            <span>POINTS</span>
+
+        </div>
+
+
+        <div class="result-word">
+
+            <span>THE WORD WAS</span>
+
+            <strong id="finalWord">
+                ----
+            </strong>
+
+        </div>
+
+
+        <div class="result-buttons">
+
+            <a href="game.html"
+               class="btn">
+                PLAY AGAIN
+            </a>
+
+            <a href="leaderboard.html"
+               class="btn secondary">
+                LEADERBOARD
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+    © 2026 Hangman Game
+</footer>
+
+
+<script>
+
+    const result = localStorage.getItem("gameResult");
+    const word = localStorage.getItem("gameWord");
+    const score = localStorage.getItem("gameScore");
+
+    const resultTitle = document.getElementById("resultTitle");
+    const resultMessage = document.getElementById("resultMessage");
+    const resultIcon = document.getElementById("resultIcon");
+    const finalScore = document.getElementById("finalScore");
+    const finalWord = document.getElementById("finalWord");
+
+    finalScore.textContent = score || "0";
+    finalWord.textContent = word || "UNKNOWN";
+
+    if (result === "You Won!") {
+
+        resultTitle.textContent = "You Won!";
+        resultMessage.textContent = "🎉 Congratulations!";
+        resultIcon.textContent = "🎉";
+
+    } else if (result === "Game Over") {
+
+        resultTitle.textContent = "Game Over";
+        resultMessage.textContent = "😢 Better Luck Next Time!";
+        resultIcon.textContent = "💀";
+
+    } else if (result === "Time Up!") {
+
+        resultTitle.textContent = "Time Up!";
+        resultMessage.textContent = "⏰ Time ran out!";
+        resultIcon.textContent = "⏰";
+
+    } else {
+
+        resultTitle.textContent = "Game Result";
+        resultMessage.textContent = "Start a new game!";
+        resultIcon.textContent = "🎮";
+
+    }
+
+</script>
+
+</body>
+
+</html>
